@@ -1,0 +1,32 @@
+﻿@page "/timecards"
+@inherits TimecardsBase
+@layout MainLayout
+
+<style>
+    body {
+        background-color: #d8e7ef;
+    }
+</style>
+
+<h1 style="color: #15416e; ">Timecards Dashboard</h1>
+<hr />
+<div id="timecards" class="container">
+
+
+    @if (TimecardCharts == null)
+    {
+        <Loader></Loader>
+    }
+    else
+    {
+        <div class="cards">
+
+            @foreach (var chart in TimecardCharts)
+            {
+                <Chart ChartId="@chart.ChartId" ChartOptions="@chart.ChartOptions"></Chart>
+            }
+        </div>
+    }
+</div>
+
+<ScrollToTop></ScrollToTop>
